@@ -3,17 +3,19 @@ import Navigation from './components/Navigation'
 import Home from './pages/Home'
 import Jokes from './pages/Jokes'
 import About from './pages/About'
+import Favorites from './pages/Favorites'
 
 const PAGES = [
-  { name: 'Home', path: '/' },
-  { name: 'Piadas', path: '/jokes' },
-  { name: 'Favoritas', path: '/favorites' },
-  { name: 'Sobre', path: '/about' }
+  { name: 'Home', label: 'Home', path: '/' },
+  { name: 'Jokes', label: 'Piadas', path: '/jokes' },
+  { name: 'Favorites', label: 'Favoritas', path: '/favorites' },
+  { name: 'About', label: 'Sobre', path: '/about' }
 ];
 
 const pageComponents: { [key: string]: React.ComponentType } = {
   Home,
   Jokes,
+  Favorites,
   About
 };
 
