@@ -1,8 +1,14 @@
 # 🤣 APP PIADA DE TIOZÃO
 ## 🚀 Como rodar o projeto
 ### 1️⃣ Instalar as dependências
+Primeiro, certifique-se de ter o Yarn instalado globalmente:
 ```
-  yarn
+npm install -g yarn
+```
+
+Depois, instale as dependências do projeto:
+```
+yarn
 ```
 ### 2️⃣ Rodar o servidor local
 ```
