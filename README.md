@@ -12,7 +12,7 @@ yarn
 ```
 ### 2️⃣ Rodar o servidor local
 ```
-  yarn dev
+yarn dev
 ```
 ## 🧠 Boas práticas do projeto
 ### 👉 Seguimos as boas práticas de desenvolvimento React com componentização na seguinte estrutura:
