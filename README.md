@@ -1,13 +1,34 @@
-# APP PIADA DE TIOZÃO
-## comandos para iniciar
-### 1
+# 🤣 APP PIADA DE TIOZÃO
+## 🚀 Como rodar o projeto
+### 1️⃣ Instalar as dependências
 ```
   yarn
 ```
-### 2
+### 2️⃣ Rodar o servidor local
 ```
   yarn dev
 ```
+## 🧠 Boas práticas do projeto
+### 👉 Seguimos as boas práticas de desenvolvimento React com componentização na seguinte estrutura:
+
+```
+📦 src
+├── 📁 assets            # Imagens e ícones
+│   └── 📄 react.svg     
+├── 📁 components        # Componentes reutilizáveis (Ex: Card de piada, Navigation...)
+│   └── 📄 Navigation.tsx
+├── 📁 pages             # Páginas do app
+│   ├── 📄 About.tsx
+│   ├── 📄 Favorites.tsx
+│   ├── 📄 Home.tsx
+│   └── 📄 Jokes.tsx
+├── 📄 App.css
+├── 📄 App.tsx
+├── 📄 index.css
+└── 📄 main.tsx
+```
+🔥 Padrão: Mantemos os arquivos organizados em pages para telas completas e components para pedaços reutilizáveis da interface.
+
 
 # React + TypeScript + Vite
 
