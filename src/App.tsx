@@ -1,22 +1,24 @@
-import { Routes, Route, Link } from 'react-router-dom'
-import Home from './pages/Home'
-import Jokes from './pages/Jokes'
-import About from './pages/About'
+import { Link } from 'react-router-dom'
+import Navigation from './pages/components/navigation'
+
+const PAGES = [
+  { name: 'Home', path: '/' },
+  { name: 'Jokes', path: '/jokes' },
+  { name: 'About', path: '/about' }
+];
 
 function App() {
   return (
-    <div>
+    <div style={{ display: 'flex', width:'100%', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh', textAlign: 'center' }}>
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+        <Navigation pages={PAGES}/>
+      </div>
       <nav style={{ display: 'flex', gap: '1rem' }}>
-        <Link to="/">Home</Link>
-        <Link to="/jokes">Piadas</Link>
-        <Link to="/about">Sobre</Link>
+        {PAGES.map(page => (
+          <Link key={page.name} to={page.path}>{page.name}</Link>
+        ))}
       </nav>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/jokes" element={<Jokes />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
     </div>
   )
 }
