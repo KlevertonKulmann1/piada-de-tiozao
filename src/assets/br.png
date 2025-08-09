@@ -1,0 +1,2 @@
+import ReactCountryFlag from "react-country-flag";
+<ReactCountryFlag countryCode="BR" svg style={{ width: 28, height: 20 }} /> 
