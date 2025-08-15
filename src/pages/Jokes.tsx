@@ -75,16 +75,27 @@ const Jokes: React.FC = () => {
           </Typography>
         </Box>
         {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
-        {language === 'pt' && loadingTranslation && (
-          <Alert severity="info" sx={{ mb: 2 }}>
-            Traduzindo piada...
-            <CircularProgress size={18} color="inherit" sx={{ ml: 1 }} />
-          </Alert>
-        )}
-        {language === 'pt' && !loadingTranslation && !translatedJoke && (
-          <Alert severity="warning" sx={{ mb: 2 }}>
-            Não foi possível traduzir a piada. Exibindo original em inglês.
-          </Alert>
+        {loadingTranslation && (
+          <Box
+            sx={{
+              position: 'absolute',
+              width: '100%',
+              height: '100vh',
+              top: '50%',
+              left: '50%',
+              zIndex: 22,
+              backgroundColor: 'rgba(0, 0, 0, 0.4)',
+              transform: 'translate(-50%, -50%)',
+              display:'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Box>
+              Traduzindo...
+              <CircularProgress size={18} color="inherit" sx={{ ml: 1 }} />
+            </Box>
+          </Box>
         )}
         {currentApiSource && (
           <Typography variant="caption" color="text.secondary" sx={{ mb: 1, fontStyle: 'italic' }}>

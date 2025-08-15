@@ -236,6 +236,8 @@ export const JokesProvider = ({ children }: { children: ReactNode }) => {
 
   // Traduz a piada atual ao trocar idioma
   React.useEffect(() => {
+      setLoadingTranslation(true);
+
     if (!currentJoke) return;
     if (language === 'en') {
       setTranslatedJoke(null);
