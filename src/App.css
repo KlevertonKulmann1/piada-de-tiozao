@@ -11,8 +11,8 @@
   justify-content: center;
   min-height: 100vh;
   text-align: center;
-  padding: var(--spacing-lg);
 }
+
 
 .app-content {
   flex: 1;
@@ -25,34 +25,27 @@
 }
 
 /* ===== Cards ===== */
-.card {
-  background-color: var(--color-white);
-  border-radius: var(--border-radius-xl);
+.MuiPaper-root.card {
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 20px;
   padding: var(--spacing-2xl);
   box-shadow: var(--shadow-lg);
   transition: all var(--transition-normal);
   border: var(--border-width-thin) solid var(--color-gray-200);
+  text-align: 'center';
 }
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-xl);
+.MuiPaper-root.card2 {
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 20px;
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-normal);
+  border: var(--border-width-thin) solid var(--color-gray-200);
+  text-align: 'center';
 }
-
-.card--elevated {
-  box-shadow: var(--shadow-xl);
+.MuiPaper-root.card2:last-child{
+  margin-bottom: 50px;
 }
-
-.card--interactive {
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.card--interactive:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
-}
-
 /* ===== Logo e Ícones ===== */
 .logo {
   height: 6em;
@@ -204,9 +197,7 @@
 
 /* ===== Responsividade ===== */
 @media (max-width: 768px) {
-  .app-container {
-    padding: var(--spacing-md);
-  }
+
   
   .card {
     padding: var(--spacing-lg);
@@ -224,9 +215,7 @@
 }
 
 @media (max-width: 480px) {
-  .app-container {
-    padding: var(--spacing-sm);
-  }
+ 
   
   .card {
     padding: var(--spacing-md);

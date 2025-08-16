@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { Box, Button, Typography, Paper, IconButton, CircularProgress, Alert } from '@mui/material';
-import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import BottomNav from '../components/BottomNavigation';
 import { useJokes } from '../JokesContext';
+import crown from '../assets/crown.svg';
 import brFlag from '../assets/br.svg';
 import usFlag from '../assets/us.svg';
+import '../App.css';
 
 const Jokes: React.FC = () => {
   const {
@@ -52,7 +53,7 @@ const Jokes: React.FC = () => {
           await nextJoke();
         setShowAnswer(false);
         setStep(1)
-      } catch (e) {
+      } catch {
         setError('Erro ao buscar nova piada. Tente novamente.');
       }
       setLoading(false);
@@ -85,7 +86,6 @@ const Jokes: React.FC = () => {
   const jokeToShow = language === 'pt' && translatedJoke ? translatedJoke : currentJoke;
   return (
     <Box 
-      // minHeight="100vh" 
       display="flex" 
       flexDirection="column" 
       justifyContent="space-between" 
@@ -94,10 +94,10 @@ const Jokes: React.FC = () => {
       <Box sx={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', flexDirection: 'column', height: '100vh' }}>
 
         <Box p={3} display="flex" flexDirection="column" alignItems="center" mt={4}>
-          <Box display="flex" alignItems="center" mb={2}>
-            <EmojiEmotionsIcon fontSize="large" sx={{ mr: 1 }} />
-            <Typography variant="h5" fontWeight="bold">
-              Piadas de Tiozão
+          <Box display="flex" alignItems="center" mb={8}>
+            <img src={crown} style={{ marginRight:10, width:45 }}/>
+            <Typography variant="h4" color="#000">
+                Piadas de Tiozão
             </Typography>
           </Box>
           {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
@@ -129,6 +129,7 @@ const Jokes: React.FC = () => {
             </Typography>
           )}
           <Paper 
+            className='card'
             elevation={3} 
             sx={{ 
               p: 3, 
@@ -137,12 +138,10 @@ const Jokes: React.FC = () => {
               minHeight: 120,
               maxWidth: 320, 
               textAlign: 'center', 
-              borderRadius: 2, 
               position: 'relative',
               alignItems: 'center',
               display: 'block',
               justifyContent: 'center',
-              backgroundColor: 'var(--color-white)',
               boxShadow: 'var(--shadow-lg)',
             }}
           >
@@ -189,10 +188,11 @@ const Jokes: React.FC = () => {
             sx={{ 
               borderRadius: 'var(--border-radius-2xl)',
               px: 4,
-              backgroundColor: 'var(--color-secondary)',
+              width: '100%',
+              backgroundColor:'#DE8514',
               color: 'var(--color-white)',
               '&:hover': {
-                backgroundColor: 'var(--color-secondary-dark)',
+                backgroundColor:'#CD7303',
                 transform: 'translateY(-1px)',
                 boxShadow: 'var(--shadow-md)'
               },
@@ -205,15 +205,15 @@ const Jokes: React.FC = () => {
           ) : (
           <Button
             variant="contained"
-            color="warning"
             size="large"
             sx={{ 
               borderRadius: 'var(--border-radius-2xl)', 
               px: 4,
-              backgroundColor: 'var(--color-secondary)',
+              width: '100%',
+              backgroundColor:'#DE8514',
               color: 'var(--color-white)',
               '&:hover': {
-                backgroundColor: 'var(--color-secondary-dark)',
+                backgroundColor:'#CD7303',
                 transform: 'translateY(-1px)',
                 boxShadow: 'var(--shadow-md)'
               },
@@ -229,17 +229,17 @@ const Jokes: React.FC = () => {
               <CircularProgress size={24} color="inherit" />
             )}
             {!loading && (
-              <Typography variant="button">
+              <Typography variant="button" >
                 Nova Piada
               </Typography>
             )}
           </Button>
           )}
         </Box>
-        <IconButton sx={{ width: 40, height: 40, mr: 2, mb: 10, alignSelf: 'flex-end', boxShadow: '0 0 0 0 rgba(0, 0, 0, 0)', p:0, '&:focus': { outline: 'none' } }} onClick={handleToggleLanguage} aria-label="Trocar idioma">
+      </Box>
+        <IconButton sx={{ width: 40, height: 40, mr: 2, position:'absolute', bottom:10, right:0, mb:8, boxShadow: '0 0 0 0 rgba(0, 0, 0, 0)', p:0, '&:focus': { outline: 'none' } }} onClick={handleToggleLanguage} aria-label="Trocar idioma">
           <img src={flagImg[language]} alt={language === 'pt' ? 'Bandeira do Brasil' : 'Bandeira dos EUA'} style={{ width: 40, height: 40, borderRadius: 2,}} />
         </IconButton>
-      </Box>
       
       <BottomNav />
     </Box>

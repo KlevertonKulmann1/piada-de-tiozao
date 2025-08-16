@@ -5,6 +5,8 @@ import BottomNav from '../components/BottomNavigation';
 import { useJokes } from '../JokesContext';
 import brFlag from '../assets/br.svg';
 import usFlag from '../assets/us.svg';
+import Coracao from '../assets/coracao.svg';
+import '../App.css';
 
 const Favorites: React.FC = () => {
 
@@ -39,15 +41,15 @@ const Favorites: React.FC = () => {
     <Box minHeight="100vh" display="flex" flexDirection="column" justifyContent="space-between" bgcolor="#FFD36E">
       <Box sx={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', flexDirection: 'column', height: '100vh' }}>
         <Box p={3} display="flex" flexDirection="column" alignItems="center" mt={4}>
-          <Box display="flex" alignItems="center" mb={2}>
-            <FavoriteIcon fontSize="large" sx={{ mr: 1, color: '#6B4F1D' }} />
-            <Typography variant="h5" fontWeight="bold">
-              Favoritas
+          <Box display="flex" alignItems="center" mb={8}>
+            <img src={Coracao} style={{ marginRight:10, width:45, filter:'brightness(0)' }}/>
+            <Typography variant="h4" color="#000">
+                Favoritas
             </Typography>
           </Box>
           <Stack spacing={2} width="100%" maxWidth={340}>
             {favorites.length === 0 ? (
-              <Paper elevation={2} sx={{ p: 2, borderRadius: 2, textAlign: 'center' }}>
+              <Paper elevation={2} className='card' sx={{ p: 2, borderRadius: 2, textAlign: 'center' }}>
                 <Typography variant="body1" color="text.secondary">
                   Nenhuma piada favorita ainda. Adicione suas favoritas!
                 </Typography>
@@ -55,18 +57,18 @@ const Favorites: React.FC = () => {
             ) : (
               favorites.map((joke) => (
                 <Fade in key={joke.id}>
-                  <Paper elevation={2} sx={{ p: 2, borderRadius: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <Paper elevation={2}  className='card2' sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', position:'relative' }}>
                     <Box>
-                      <Typography variant="subtitle1" fontWeight="bold">
+                      <Typography variant="subtitle1" fontWeight="bold" textAlign='left'>
                         {language === 'pt' ? joke.pergunta : joke.question}
                       </Typography>
                       {joke.answer && (
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" color="text.secondary" textAlign='left'>
                           {language === 'pt' ? joke.resposta : joke.answer}
                         </Typography>
                       )}
                     </Box>
-                    <IconButton color="error" onClick={() => handleRemoveClick(joke.id)} aria-label="Remover dos favoritos">
+                    <IconButton sx={{position:'absolute', right:4, top:2}} color="error" onClick={() => handleRemoveClick(joke.id)} aria-label="Remover dos favoritos">
                       <FavoriteIcon />
                     </IconButton>
                   </Paper>
@@ -75,7 +77,7 @@ const Favorites: React.FC = () => {
             )}
           </Stack>
         </Box>
-        <IconButton sx={{ width: 40, height: 40, mr: 2, mb: 10, alignSelf: 'flex-end', boxShadow: '0 0 0 0 rgba(0, 0, 0, 0)', p:0, '&:focus': { outline: 'none' } }} onClick={toggleJokeLanguage} aria-label="Trocar idioma">
+        <IconButton sx={{ width: 40, height: 40, mr: 2, mb: 10, position:'fixed', bottom:0, right:2, boxShadow: '0 0 0 0 rgba(0, 0, 0, 0)', p:0, '&:focus': { outline: 'none' } }} onClick={toggleJokeLanguage} aria-label="Trocar idioma">
           <img src={flagImg[language]} alt={language === 'pt' ? 'Bandeira do Brasil' : 'Bandeira dos EUA'} style={{ width: 40, height: 40, borderRadius: 2,}} />
         </IconButton>
       </Box>
