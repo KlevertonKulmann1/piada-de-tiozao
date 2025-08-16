@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Box, Button, Typography, Paper, IconButton, CircularProgress, Alert } from '@mui/material';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import BottomNav from '../components/BottomNavigation';
 import { useJokes } from '../JokesContext';
 import crown from '../assets/crown.svg';
@@ -138,12 +138,10 @@ const Jokes: React.FC = () => {
               minHeight: 120,
               maxWidth: 320, 
               textAlign: 'center', 
-              borderRadius: 2, 
               position: 'relative',
               alignItems: 'center',
               display: 'block',
               justifyContent: 'center',
-              backgroundColor: 'var(--color-white)',
               boxShadow: 'var(--shadow-lg)',
             }}
           >
