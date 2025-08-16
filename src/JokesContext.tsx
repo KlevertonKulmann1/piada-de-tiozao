@@ -5,6 +5,8 @@ export type Joke = {
   id: string;
   question: string;
   answer: string;
+  pergunta?: string;
+  resposta?: string;
 };
 
 type Language = 'pt' | 'en';
@@ -271,11 +273,23 @@ export const JokesProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const toggleFavorite = (joke: Joke) => {
-    setFavorites((prev) =>
-      prev.some((f) => f.id === joke.id)
-        ? prev.filter((f) => f.id !== joke.id)
-        : [...prev, joke]
-    );
+    Promise.all([
+      translateText(joke.question, 'pt'),
+      translateText(joke.answer, 'pt')
+    ]).then(([question, answer]) => {
+      console.log(question, answer)
+      joke.pergunta = question;
+      joke.resposta = answer;
+      setFavorites((prev) =>
+        prev.some((f) => f.id === joke.id)
+          ? prev.filter((f) => f.id !== joke.id)
+          : [...prev, joke]
+      );
+    }).catch(() => {
+      // setTranslatedJoke(null);
+      // setLoadingTranslation(false);
+    });
+    
   };
 
   return (
