@@ -168,8 +168,7 @@ const Jokes: React.FC = () => {
           color="warning"
           size="large"
           sx={{ 
-            borderRadius: 'var(--border-radius-2xl)', 
-            fontWeight: 'var(--font-weight-bold)', 
+            borderRadius: 'var(--border-radius-2xl)',
             px: 4,
             backgroundColor: 'var(--color-secondary)',
             color: 'var(--color-white)',
@@ -177,6 +176,9 @@ const Jokes: React.FC = () => {
               backgroundColor: 'var(--color-secondary-dark)',
               transform: 'translateY(-1px)',
               boxShadow: 'var(--shadow-md)'
+            },
+            '&:focus':{
+              outline: 'none',
             },
             transition: 'var(--transition-fast)'
           }}
@@ -188,7 +190,6 @@ const Jokes: React.FC = () => {
           size="large"
           sx={{ 
             borderRadius: 'var(--border-radius-2xl)', 
-            fontWeight: 'var(--font-weight-bold)', 
             px: 4,
             backgroundColor: 'var(--color-secondary)',
             color: 'var(--color-white)',
@@ -196,6 +197,9 @@ const Jokes: React.FC = () => {
               backgroundColor: 'var(--color-secondary-dark)',
               transform: 'translateY(-1px)',
               boxShadow: 'var(--shadow-md)'
+            },
+            '&:focus':{
+              outline: 'none',
             },
             transition: 'var(--transition-fast)'
           }}
