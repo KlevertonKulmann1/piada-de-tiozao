@@ -146,7 +146,11 @@ async function translateText(text: string, target: string): Promise<string> {
     
     const data = await res.json();
     // A resposta vem em formato aninhado, pegamos o primeiro elemento
+    console.log(data[0][0][0],data[0][0][1], text);
     if (data && data[0] && data[0][0] && data[0][0][0]) {
+      if (data[0][1][0]) {
+        return `${data[0][0][0]} ${data[0][1][0]}`;
+      }
       return data[0][0][0];
     }
     throw new Error('Formato de resposta inválido');
