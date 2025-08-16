@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Button, Typography, Paper, IconButton, CircularProgress, Alert } from '@mui/material';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -21,24 +21,36 @@ const Jokes: React.FC = () => {
   } = useJokes();
 
   const [loading, setLoading] = React.useState(false);
+  const [step, setStep] = React.useState(1);
   const [error, setError] = React.useState<string | null>(null);
 
   const isFavorite = currentJoke && favorites.some(fav => fav.id === currentJoke.id);
 
-  const handleButtonClick = async () => {
-    if (showAnswer) {
+
+  const handleShowAnswer = () => {
+    setShowAnswer(true);
+    setStep(2)
+  };
+
+  const askJoke = async () => {
       setLoading(true);
       setError(null);
       try {
-        await nextJoke();
+          await nextJoke();
+        setShowAnswer(false);
+        setStep(1)
       } catch (e) {
         setError('Erro ao buscar nova piada. Tente novamente.');
       }
       setLoading(false);
-    } else {
-      setShowAnswer(true);
-    }
   };
+
+  useEffect(()=>{
+    
+    if(currentJoke?.answer === '') {
+      setStep(2)
+    }
+  },[currentJoke, setStep, step])
 
   if (!currentJoke) {
     return (
@@ -58,7 +70,6 @@ const Jokes: React.FC = () => {
 
   // Decide qual piada mostrar
   const jokeToShow = language === 'pt' && translatedJoke ? translatedJoke : currentJoke;
-
   return (
     <Box 
       minHeight="100vh" 
@@ -151,6 +162,26 @@ const Jokes: React.FC = () => {
             {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
           </IconButton>
         </Paper>
+        {step < 2 ? (
+          <Button
+          variant="contained"
+          color="warning"
+          size="large"
+          sx={{ 
+            borderRadius: 'var(--border-radius-2xl)', 
+            fontWeight: 'var(--font-weight-bold)', 
+            px: 4,
+            backgroundColor: 'var(--color-secondary)',
+            color: 'var(--color-white)',
+            '&:hover': {
+              backgroundColor: 'var(--color-secondary-dark)',
+              transform: 'translateY(-1px)',
+              boxShadow: 'var(--shadow-md)'
+            },
+            transition: 'var(--transition-fast)'
+          }}
+          onClick={() => handleShowAnswer()}>Ver resposta</Button>
+        ) : (
         <Button
           variant="contained"
           color="warning"
@@ -168,11 +199,19 @@ const Jokes: React.FC = () => {
             },
             transition: 'var(--transition-fast)'
           }}
-          onClick={handleButtonClick}
-          disabled={loading || loadingTranslation}
+          onClick={askJoke}
+          disabled={loading}
         >
-          {loading || loadingTranslation ? <CircularProgress size={24} color="inherit" /> : showAnswer ? 'Nova Piada' : 'Ver resposta'}
+          {loading && (
+            <CircularProgress size={24} color="inherit" />
+          )}
+          {!loading && (
+            <Typography variant="button">
+              Nova Piada
+            </Typography>
+          )}
         </Button>
+        )}
       </Box>
       <BottomNav />
     </Box>

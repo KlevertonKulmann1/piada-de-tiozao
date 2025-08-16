@@ -199,7 +199,6 @@ export const JokesProvider = ({ children }: { children: ReactNode }) => {
 
   // Busca uma nova piada da API
   const nextJoke = async () => {
-    setShowAnswer(false);
     setLoadingTranslation(false);
     setTranslatedJoke(null);
     let jokeData: { joke: Joke; source: string } | null = null;
