@@ -13,7 +13,7 @@ const Favorites: React.FC = () => {
     en: usFlag,
   };
   const { favorites, toggleFavorite } = useJokes();
-  const [language, setLanguage] = React.useState('en');
+  const [language, setLanguage] = React.useState<'pt' | 'en'>('en');
   const [openDialog, setOpenDialog] = React.useState(false);
   const [selectedJokeId, setSelectedJokeId] = React.useState<string | null>(null);
 
