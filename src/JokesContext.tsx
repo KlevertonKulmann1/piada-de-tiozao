@@ -83,17 +83,17 @@ async function fetchJokeFromDadJokesAPI(): Promise<Joke> {
   };
 }
 
-// API 4: Chuck Norris Jokes (para variedade)
-async function fetchJokeFromChuckNorrisAPI(): Promise<Joke> {
-  const res = await fetch('https://api.chucknorris.io/jokes/random');
-  if (!res.ok) throw new Error('Error fetching joke from Chuck Norris API');
-  const data = await res.json();
-  return {
-    id: `chuck_${data.id?.toString() || Math.random().toString()}`,
-    question: data.value,
-    answer: '',
-  };
-}
+// // API 4: Chuck Norris Jokes (para variedade)
+// async function fetchJokeFromChuckNorrisAPI(): Promise<Joke> {
+//   const res = await fetch('https://api.chucknorris.io/jokes/random');
+//   if (!res.ok) throw new Error('Error fetching joke from Chuck Norris API');
+//   const data = await res.json();
+//   return {
+//     id: `chuck_${data.id?.toString() || Math.random().toString()}`,
+//     question: data.value,
+//     answer: '',
+//   };
+// }
 
 // Função principal que tenta todas as APIs com fallback
 async function fetchJokeEN(): Promise<{ joke: Joke; source: string }> {
@@ -101,7 +101,7 @@ async function fetchJokeEN(): Promise<{ joke: Joke; source: string }> {
     { name: 'Official Joke API', fn: fetchJokeFromOfficialAPI },
     { name: 'JokeAPI', fn: fetchJokeFromJokeAPI },
     { name: 'Dad Jokes API', fn: fetchJokeFromDadJokesAPI },
-    { name: 'Chuck Norris API', fn: fetchJokeFromChuckNorrisAPI },
+    // { name: 'Chuck Norris API', fn: fetchJokeFromChuckNorrisAPI },
   ];
 
   // Embaralha a ordem das APIs para dar variedade
@@ -146,9 +146,9 @@ async function translateText(text: string, target: string): Promise<string> {
     
     const data = await res.json();
     // A resposta vem em formato aninhado, pegamos o primeiro elemento
-    console.log(data[0][0][0],data[0][0][1], text);
+    
     if (data && data[0] && data[0][0] && data[0][0][0]) {
-      if (data[0][1][0]) {
+      if (data && data[0] && data[0][1] && data[0][1][0]) {
         return `${data[0][0][0]} ${data[0][1][0]}`;
       }
       return data[0][0][0];
@@ -156,33 +156,7 @@ async function translateText(text: string, target: string): Promise<string> {
     throw new Error('Formato de resposta inválido');
   } catch (error) {
     console.error('Erro na tradução Google:', error);
-    
-    // Segunda tentativa: LibreTranslate (fallback)
-    try {
-      const res = await fetch('https://libretranslate.de/translate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          q: text,
-          source: 'en',
-          target: target,
-        }),
-      });
-      
-      if (!res.ok) throw new Error('Erro no LibreTranslate');
-      
-      const data = await res.json();
-      if (data && data.translatedText) {
-        return data.translatedText;
-      }
-      throw new Error('Formato de resposta inválido no LibreTranslate');
-    } catch (fallbackError) {
-      console.error('Erro na tradução LibreTranslate:', fallbackError);
-      // Fallback final: retorna o texto original se todas as traduções falharem
-      return text;
-    }
+    return text; // Retorna o texto original em caso de erro
   }
 }
 
@@ -281,6 +255,7 @@ export const JokesProvider = ({ children }: { children: ReactNode }) => {
       translateText(joke.question, 'pt'),
       translateText(joke.answer, 'pt')
     ]).then(([question, answer]) => {
+      console.log(joke)
       joke.pergunta = question;
       joke.resposta = answer;
       setFavorites((prev) =>

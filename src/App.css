@@ -11,7 +11,6 @@
   justify-content: center;
   min-height: 100vh;
   text-align: center;
-  padding: var(--spacing-lg);
 }
 
 
@@ -206,9 +205,7 @@
 
 /* ===== Responsividade ===== */
 @media (max-width: 768px) {
-  .app-container {
-    padding: var(--spacing-md);
-  }
+
   
   .card {
     padding: var(--spacing-lg);
@@ -226,9 +223,7 @@
 }
 
 @media (max-width: 480px) {
-  .app-container {
-    padding: var(--spacing-sm);
-  }
+ 
   
   .card {
     padding: var(--spacing-md);

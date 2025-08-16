@@ -75,7 +75,7 @@ const Favorites: React.FC = () => {
             )}
           </Stack>
         </Box>
-        <IconButton sx={{ width: 40, height: 40, mr: 2, mb: 10, alignSelf: 'flex-end', boxShadow: '0 0 0 0 rgba(0, 0, 0, 0)', p:0, '&:focus': { outline: 'none' } }} onClick={toggleJokeLanguage} aria-label="Trocar idioma">
+        <IconButton sx={{ width: 40, height: 40, mr: 2, mb: 10, position:'fixed', bottom:0, right:2, boxShadow: '0 0 0 0 rgba(0, 0, 0, 0)', p:0, '&:focus': { outline: 'none' } }} onClick={toggleJokeLanguage} aria-label="Trocar idioma">
           <img src={flagImg[language]} alt={language === 'pt' ? 'Bandeira do Brasil' : 'Bandeira dos EUA'} style={{ width: 40, height: 40, borderRadius: 2,}} />
         </IconButton>
       </Box>
