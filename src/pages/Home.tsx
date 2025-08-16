@@ -29,8 +29,8 @@ const Home: React.FC = () => {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare nisl odio, sed ullamcorper massa hendrerit ut.
                     </Typography>
                 </Paper>
-                <Button variant="contained" style={{backgroundColor: '#DE8514'}} size="large" sx={{ borderRadius: 8, fontWeight: 'bold', px: 4 }} onClick={handleHoraDaPiada}>
-                <img src={smile} style={{ marginRight:10 }}/>                Hora da Piada
+                <Button variant="contained" style={{backgroundColor: '#DE8514'}} size="large" sx={{ borderRadius: 8, fontWeight: 'bold', px: 4, '&:focus':{outline:'none'} }} onClick={handleHoraDaPiada}>
+                    <img src={smile} style={{ marginRight:10 }}/>Hora da Piada
                 </Button>
             </Box>
             <BottomNav />
