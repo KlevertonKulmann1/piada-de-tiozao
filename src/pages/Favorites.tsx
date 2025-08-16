@@ -3,11 +3,23 @@ import { Box, Typography, Paper, IconButton, Stack, Dialog, DialogTitle, DialogC
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import BottomNav from '../components/BottomNavigation';
 import { useJokes } from '../JokesContext';
+import brFlag from '../assets/br.svg';
+import usFlag from '../assets/us.svg';
 
 const Favorites: React.FC = () => {
+
+  const flagImg = {
+    pt: brFlag,
+    en: usFlag,
+  };
   const { favorites, toggleFavorite } = useJokes();
+  const [language, setLanguage] = React.useState('en');
   const [openDialog, setOpenDialog] = React.useState(false);
   const [selectedJokeId, setSelectedJokeId] = React.useState<string | null>(null);
+
+  const toggleJokeLanguage = () => {
+    setLanguage(language === 'pt' ? 'en' : 'pt');
+  };
 
   const handleRemoveClick = (jokeId: string) => {
     setSelectedJokeId(jokeId);
@@ -25,42 +37,47 @@ const Favorites: React.FC = () => {
 
   return (
     <Box minHeight="100vh" display="flex" flexDirection="column" justifyContent="space-between" bgcolor="#FFD36E">
-      <Box p={3} display="flex" flexDirection="column" alignItems="center" mt={4}>
-        <Box display="flex" alignItems="center" mb={2}>
-          <FavoriteIcon fontSize="large" sx={{ mr: 1, color: '#6B4F1D' }} />
-          <Typography variant="h5" fontWeight="bold">
-            Favoritas
-          </Typography>
-        </Box>
-        <Stack spacing={2} width="100%" maxWidth={340}>
-          {favorites.length === 0 ? (
-            <Paper elevation={2} sx={{ p: 2, borderRadius: 2, textAlign: 'center' }}>
-              <Typography variant="body1" color="text.secondary">
-                Nenhuma piada favorita ainda. Adicione suas favoritas!
-              </Typography>
-            </Paper>
-          ) : (
-            favorites.map((joke) => (
-              <Fade in key={joke.id}>
-                <Paper elevation={2} sx={{ p: 2, borderRadius: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <Box>
-                    <Typography variant="subtitle1" fontWeight="bold">
-                      {joke.question}
-                    </Typography>
-                    {joke.answer && (
-                      <Typography variant="body2" color="text.secondary">
-                        {joke.answer}
+      <Box sx={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', flexDirection: 'column', height: '100vh' }}>
+        <Box p={3} display="flex" flexDirection="column" alignItems="center" mt={4}>
+          <Box display="flex" alignItems="center" mb={2}>
+            <FavoriteIcon fontSize="large" sx={{ mr: 1, color: '#6B4F1D' }} />
+            <Typography variant="h5" fontWeight="bold">
+              Favoritas
+            </Typography>
+          </Box>
+          <Stack spacing={2} width="100%" maxWidth={340}>
+            {favorites.length === 0 ? (
+              <Paper elevation={2} sx={{ p: 2, borderRadius: 2, textAlign: 'center' }}>
+                <Typography variant="body1" color="text.secondary">
+                  Nenhuma piada favorita ainda. Adicione suas favoritas!
+                </Typography>
+              </Paper>
+            ) : (
+              favorites.map((joke) => (
+                <Fade in key={joke.id}>
+                  <Paper elevation={2} sx={{ p: 2, borderRadius: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <Box>
+                      <Typography variant="subtitle1" fontWeight="bold">
+                        {language === 'pt' ? joke.pergunta : joke.question}
                       </Typography>
-                    )}
-                  </Box>
-                  <IconButton color="error" onClick={() => handleRemoveClick(joke.id)} aria-label="Remover dos favoritos">
-                    <FavoriteIcon />
-                  </IconButton>
-                </Paper>
-              </Fade>
-            ))
-          )}
-        </Stack>
+                      {joke.answer && (
+                        <Typography variant="body2" color="text.secondary">
+                          {language === 'pt' ? joke.resposta : joke.answer}
+                        </Typography>
+                      )}
+                    </Box>
+                    <IconButton color="error" onClick={() => handleRemoveClick(joke.id)} aria-label="Remover dos favoritos">
+                      <FavoriteIcon />
+                    </IconButton>
+                  </Paper>
+                </Fade>
+              ))
+            )}
+          </Stack>
+        </Box>
+        <IconButton sx={{ width: 40, height: 40, mr: 2, mb: 10, alignSelf: 'flex-end', boxShadow: '0 0 0 0 rgba(0, 0, 0, 0)', p:0, '&:focus': { outline: 'none' } }} onClick={toggleJokeLanguage} aria-label="Trocar idioma">
+          <img src={flagImg[language]} alt={language === 'pt' ? 'Bandeira do Brasil' : 'Bandeira dos EUA'} style={{ width: 40, height: 40, borderRadius: 2,}} />
+        </IconButton>
       </Box>
       <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
         <DialogTitle>Remover dos favoritos?</DialogTitle>
