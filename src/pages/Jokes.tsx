@@ -124,19 +124,19 @@ const Jokes: React.FC = () => {
             textAlign: 'center', 
             borderRadius: 2, 
             position: 'relative',
-            display: 'flex',
             alignItems: 'center',
+            display: 'block',
             justifyContent: 'center',
             backgroundColor: 'var(--color-white)',
-            boxShadow: 'var(--shadow-lg)'
+            boxShadow: 'var(--shadow-lg)',
           }}
         >
           <Typography 
             variant="h6" 
             color="text.primary"
             sx={{
-              pr: 6, // Espaço para o ícone de favoritos
               pl: 1,
+              pr: 1,
               wordWrap: 'break-word',
               hyphens: 'auto',
               lineHeight: 1.4
@@ -149,12 +149,16 @@ const Jokes: React.FC = () => {
             color={isFavorite ? 'error' : 'default'}
             sx={{ 
               position: 'absolute', 
-              top: 8, 
-              right: 8,
-              backgroundColor: 'rgba(255, 255, 255, 0.9)',
+              top: 4, 
+              right: 4,
+              backgroundColor: 'rgba(255, 255, 255, 0)',
               '&:hover': {
-                backgroundColor: 'rgba(255, 255, 255, 1)'
-              }
+                backgroundColor: 'rgba(255, 255, 255, 0)',
+                boxShadow: '0 0 0  rgba(0, 0, 0, 0)',
+              },
+              '&:focus': {
+                outline:'none',
+              },
             }}
             aria-label="Favoritar piada"
             disabled={loading}
