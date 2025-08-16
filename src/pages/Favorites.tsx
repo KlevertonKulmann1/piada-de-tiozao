@@ -5,6 +5,7 @@ import BottomNav from '../components/BottomNavigation';
 import { useJokes } from '../JokesContext';
 import brFlag from '../assets/br.svg';
 import usFlag from '../assets/us.svg';
+import Coracao from '../assets/coracao.svg';
 import '../App.css';
 
 const Favorites: React.FC = () => {
@@ -40,10 +41,10 @@ const Favorites: React.FC = () => {
     <Box minHeight="100vh" display="flex" flexDirection="column" justifyContent="space-between" bgcolor="#FFD36E">
       <Box sx={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', flexDirection: 'column', height: '100vh' }}>
         <Box p={3} display="flex" flexDirection="column" alignItems="center" mt={4}>
-          <Box display="flex" alignItems="center" mb={2}>
-            <FavoriteIcon fontSize="large" sx={{ mr: 1, color: '#6B4F1D' }}  />
-            <Typography variant="h5" fontWeight="bold">
-              Favoritas
+          <Box display="flex" alignItems="center" mb={8}>
+            <img src={Coracao} style={{ marginRight:10, width:45, filter:'brightness(0)' }}/>
+            <Typography variant="h4" color="#000">
+                Favoritas
             </Typography>
           </Box>
           <Stack spacing={2} width="100%" maxWidth={340}>
