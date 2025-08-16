@@ -277,7 +277,6 @@ export const JokesProvider = ({ children }: { children: ReactNode }) => {
       translateText(joke.question, 'pt'),
       translateText(joke.answer, 'pt')
     ]).then(([question, answer]) => {
-      console.log(question, answer)
       joke.pergunta = question;
       joke.resposta = answer;
       setFavorites((prev) =>
@@ -286,8 +285,8 @@ export const JokesProvider = ({ children }: { children: ReactNode }) => {
           : [...prev, joke]
       );
     }).catch(() => {
-      // setTranslatedJoke(null);
-      // setLoadingTranslation(false);
+      setTranslatedJoke(null);
+      setLoadingTranslation(false);
     });
     
   };
