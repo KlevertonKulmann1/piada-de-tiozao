@@ -52,7 +52,7 @@ const Jokes: React.FC = () => {
           await nextJoke();
         setShowAnswer(false);
         setStep(1)
-      } catch (e) {
+      } catch {
         setError('Erro ao buscar nova piada. Tente novamente.');
       }
       setLoading(false);
@@ -189,10 +189,10 @@ const Jokes: React.FC = () => {
             sx={{ 
               borderRadius: 'var(--border-radius-2xl)',
               px: 4,
-              backgroundColor: 'var(--color-secondary)',
+              backgroundColor:'#DE8514',
               color: 'var(--color-white)',
               '&:hover': {
-                backgroundColor: 'var(--color-secondary-dark)',
+                backgroundColor:'#CD7303',
                 transform: 'translateY(-1px)',
                 boxShadow: 'var(--shadow-md)'
               },
@@ -205,15 +205,14 @@ const Jokes: React.FC = () => {
           ) : (
           <Button
             variant="contained"
-            color="warning"
             size="large"
             sx={{ 
               borderRadius: 'var(--border-radius-2xl)', 
               px: 4,
-              backgroundColor: 'var(--color-secondary)',
+              backgroundColor:'#DE8514',
               color: 'var(--color-white)',
               '&:hover': {
-                backgroundColor: 'var(--color-secondary-dark)',
+                backgroundColor:'#CD7303',
                 transform: 'translateY(-1px)',
                 boxShadow: 'var(--shadow-md)'
               },
@@ -229,7 +228,7 @@ const Jokes: React.FC = () => {
               <CircularProgress size={24} color="inherit" />
             )}
             {!loading && (
-              <Typography variant="button">
+              <Typography variant="button" >
                 Nova Piada
               </Typography>
             )}
