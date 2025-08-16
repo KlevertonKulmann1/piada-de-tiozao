@@ -9,7 +9,7 @@ import Cracha from '../assets/cracha.svg';
 const navItems = [
   { label: 'Piada', icon: <img src={Mascara} />, path: '/' },
   { label: 'Favoritas', icon: <img src={Coracao} />, path: '/favorites' },
-  { label: 'Sobre nós', icon: <img src={Cracha} />, path: '/about' },
+  { label: 'Sobre Nós', icon: <img src={Cracha} />, path: '/about' },
 ];
 
 
