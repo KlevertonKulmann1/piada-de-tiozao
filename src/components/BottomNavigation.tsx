@@ -1,15 +1,15 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { BottomNavigation, BottomNavigationAction, Paper, Box } from '@mui/material';
-import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import InfoIcon from '@mui/icons-material/Info';
+import Mascara from '../assets/mascara.svg';
+import Coracao from '../assets/coracao.svg';
+import Cracha from '../assets/cracha.svg';
 
 
 const navItems = [
-  { label: 'Piada', icon: <EmojiEmotionsIcon />, path: '/' },
-  { label: 'Favoritos', icon: <FavoriteIcon />, path: '/favorites' },
-  { label: 'Sobre nós', icon: <InfoIcon />, path: '/about' },
+  { label: 'Piada', icon: <img src={Mascara} />, path: '/' },
+  { label: 'Favoritos', icon: <img src={Coracao} />, path: '/favorites' },
+  { label: 'Sobre nós', icon: <img src={Cracha} />, path: '/about' },
 ];
 
 
@@ -35,11 +35,26 @@ const BottomNav: React.FC = () => {
             setValue(newValue);
             navigate(navItems[newValue].path);
           }}
-          sx={{ flex: 1, bgcolor: 'transparent' }}
+          sx={{ flex: 1, bgcolor: 'transparent', '&focus':{outline:'none'} }}
         >
-          {navItems.map((item) => (
-            <BottomNavigationAction key={item.label} label={item.label} icon={item.icon} sx={{ color: '#fff' }} />
-          ))}
+            {navItems.map((item) => (
+            <BottomNavigationAction 
+              key={item.label} 
+              label={item.label} 
+              icon={item.icon} 
+              sx={{ 
+              color: '#fff', 
+              gap: .8,
+              filter: 'grayscale(100%) brightness(200%)',
+              '&.Mui-selected': { 
+                color: '#F2BF59',
+                filter: 'grayscale(0) brightness(1)',
+              },
+              '&:focus':{outline:'none'},
+              '&:hover':{backgroundColor:'transparent', tranform:'translate(0,0)', boxShadow:'none'},
+              }}
+            />
+            ))}
         </BottomNavigation>
         
       </Box>
