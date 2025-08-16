@@ -5,6 +5,8 @@ export type Joke = {
   id: string;
   question: string;
   answer: string;
+  pergunta?: string;
+  resposta?: string;
 };
 
 type Language = 'pt' | 'en';
@@ -144,7 +146,11 @@ async function translateText(text: string, target: string): Promise<string> {
     
     const data = await res.json();
     // A resposta vem em formato aninhado, pegamos o primeiro elemento
+    console.log(data[0][0][0],data[0][0][1], text);
     if (data && data[0] && data[0][0] && data[0][0][0]) {
+      if (data[0][1][0]) {
+        return `${data[0][0][0]} ${data[0][1][0]}`;
+      }
       return data[0][0][0];
     }
     throw new Error('Formato de resposta inválido');
@@ -199,7 +205,6 @@ export const JokesProvider = ({ children }: { children: ReactNode }) => {
 
   // Busca uma nova piada da API
   const nextJoke = async () => {
-    setShowAnswer(false);
     setLoadingTranslation(false);
     setTranslatedJoke(null);
     let jokeData: { joke: Joke; source: string } | null = null;
@@ -236,6 +241,8 @@ export const JokesProvider = ({ children }: { children: ReactNode }) => {
 
   // Traduz a piada atual ao trocar idioma
   React.useEffect(() => {
+      setLoadingTranslation(true);
+
     if (!currentJoke) return;
     if (language === 'en') {
       setTranslatedJoke(null);
@@ -270,11 +277,22 @@ export const JokesProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const toggleFavorite = (joke: Joke) => {
-    setFavorites((prev) =>
-      prev.some((f) => f.id === joke.id)
-        ? prev.filter((f) => f.id !== joke.id)
-        : [...prev, joke]
-    );
+    Promise.all([
+      translateText(joke.question, 'pt'),
+      translateText(joke.answer, 'pt')
+    ]).then(([question, answer]) => {
+      joke.pergunta = question;
+      joke.resposta = answer;
+      setFavorites((prev) =>
+        prev.some((f) => f.id === joke.id)
+          ? prev.filter((f) => f.id !== joke.id)
+          : [...prev, joke]
+      );
+    }).catch(() => {
+      setTranslatedJoke(null);
+      setLoadingTranslation(false);
+    });
+    
   };
 
   return (
