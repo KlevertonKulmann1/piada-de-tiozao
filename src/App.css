@@ -43,7 +43,9 @@
   border: var(--border-width-thin) solid var(--color-gray-200);
   text-align: 'center';
 }
-
+.MuiPaper-root.card2:last-child{
+  margin-bottom: 50px;
+}
 /* ===== Logo e Ícones ===== */
 .logo {
   height: 6em;
