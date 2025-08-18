@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Button, Typography, Paper } from '@mui/material';
 import BottomNav from '../components/BottomNavigation';
 import { useNavigate } from 'react-router-dom';
@@ -11,8 +11,10 @@ import '../App.css';
 const Home: React.FC = () => {
     const navigate = useNavigate();
     const { nextJoke } = useJokes();
+    const [loadingPiada, setLoadingPiada] = useState(false);
 
     const handleHoraDaPiada = async () => {
+        setLoadingPiada(true)
         await nextJoke();
         navigate('/jokes');
     };
@@ -28,10 +30,11 @@ const Home: React.FC = () => {
                 </Box>
                 <Paper elevation={3} className='card' sx={{ p: 2, mb: 3 }}>
                     <Typography variant="body1" color="text.secondary" fontWeight='500'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare nisl odio, sed ullamcorper massa hendrerit ut.
+                    "Seja bem vindo ao Tiozão, aqui você pode encontrar piadas de qualquer lugar do mundo. 
+                    Vale rir quando a tradução não condiz com a piada original".
                     </Typography>
                 </Paper>
-                <Button variant="contained" size="large" sx={{ backgroundColor:'#DE8514', width:'100%', borderRadius: 8, fontSize:20, fontWeight: '500', px: 4, '&:focus':{outline:'none'}, '&:hover':{backgroundColor:'#CD7303'} }} onClick={handleHoraDaPiada}>
+                <Button variant="contained" size="large" loading={loadingPiada} sx={{ backgroundColor:'#DE8514', width:'100%', borderRadius: 8, fontSize:20, fontWeight: '500', px: 4, '&:focus':{outline:'none'}, '&:hover':{backgroundColor:'#CD7303'} }} onClick={handleHoraDaPiada}>
                     <img src={smile} style={{ marginRight:10 }}/> Hora da Piada
                 </Button>
             </Box>
