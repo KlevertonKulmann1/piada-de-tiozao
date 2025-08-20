@@ -20,18 +20,14 @@ const About: React.FC = () => {
                 Sobre Nós
             </Typography>
           </Box>
-        <Paper elevation={3} className='card' sx={{ p: 2, maxWidth: 320, textAlign: 'justify', borderRadius: 2 }}>
+        <Paper elevation={3} className='card' sx={{ p: 2, maxWidth: 320, textAlign: 'justify', borderRadius: 2, marginBottom: 2 }}>
           <Typography variant="body1" color="text.secondary">
             Este projeto foi desenvolvido com carinho pelos estudantes do último semestre da graduação em Sistemas para Internet do Centro Universitário SENAC, como parte do projeto integrador do semestre. 
             A ideia é trazer um pouco de humor e nostalgia com as famosas piadas de tiozão, que sempre arrancam risadas e sorrisos. Esperamos que você se divirta tanto quanto nós nos divertimos criando este projeto!
           </Typography>
         </Paper>
 
-          <Typography variant="h5" color="text.primary" gutterBottom style={{ marginTop: 20, marginBottom: 10 }}>
-            Desenvolvedores
-          </Typography>
-
-        <Paper elevation={3} className='card' sx={{ p: 2, maxWidth: 320, textAlign: 'center',borderRadius: 2 }}>
+        <Paper elevation={3} className='card' style={{padding: 30}} sx={{ maxWidth: 320, textAlign: 'center', borderRadius: 2, marginBottom: 2 }}>
   <Box display="flex" alignItems="center" justifyContent="center">
     <img src={Bianca} style={{ width: 80, marginRight: 16, borderRadius: 16, boxShadow: '8px 8px 16px rgba(0,0,0,0.18)' }} />
     <Box>
@@ -50,8 +46,7 @@ const About: React.FC = () => {
   </Box>
 </Paper>
 
-        <Paper elevation={3} className='card' sx={{ p: 2, maxWidth: 320, textAlign: 'center',
-borderRadius: 2 }}>
+        <Paper elevation={3} className='card' style={{padding: 30}} sx={{ maxWidth: 320, textAlign: 'center', borderRadius: 2, marginBottom: 2 }}>
   <Box display="flex" alignItems="center" justifyContent="center">
     <img src={Diego} style={{ width: 80, marginRight: 16, borderRadius: 16, boxShadow: '8px 8px 16px rgba(0,0,0,0.18)' }} />
     <Box>
@@ -67,13 +62,12 @@ borderRadius: 2 }}>
   </Box>
 </Paper>
 
-        <Paper elevation={3} className='card' sx={{ p: 2, maxWidth: 320, textAlign: 'center',
-borderRadius: 2 }}>
+        <Paper elevation={3} className='card' style={{padding: 30}} sx={{ maxWidth: 320, textAlign: 'center', borderRadius: 2, marginBottom: 2 }}>
   <Box display="flex" alignItems="center" justifyContent="center">
     <img src={Manoela} style={{ width: 80, marginRight: 16, borderRadius: 16, boxShadow: '8px 8px 16px rgba(0,0,0,0.18)' }} />
     <Box>
       <Typography variant="subtitle1" color="text.primary">
-        Manoela Harrison
+      Manoela Harrison
       </Typography>
       <Typography variant="body2" color="text.secondary">
         <a 
@@ -87,13 +81,12 @@ borderRadius: 2 }}>
   </Box>
 </Paper>
       
-        <Paper elevation={3} className='card' sx={{ p: 2, maxWidth: 320, textAlign: 'center',
-borderRadius: 2 }}>
+<Paper elevation={3} className='card' style={{padding: 30}} sx={{ maxWidth: 320, textAlign: 'center', borderRadius: 2, marginBottom: 2 }}>
   <Box display="flex" alignItems="center" justifyContent="center">
-    <img src={Kleverton} style={{ width: 80, marginRight: 12 }} />
+    <img src={Kleverton} style={{ width: 80, marginRight: 16, borderRadius: 16, boxShadow: '8px 8px 16px rgba(0,0,0,0.18)' }} />
     <Box>
       <Typography variant="subtitle1" color="text.primary">
-        Kleverton Kullman
+        Kleverton Kulmann
       </Typography>
       <Typography variant="body2" color="text.secondary">
         <a 
@@ -107,10 +100,9 @@ https://github.com/KlevertonKulmann1
   </Box>
 </Paper>
       
-              <Paper elevation={3} className='card' sx={{ p: 2, maxWidth: 320, textAlign: 'center',
-borderRadius: 2 }}>
+ <Paper elevation={3} className='card' style={{padding: 30}} sx={{ maxWidth: 320, textAlign: 'center', borderRadius: 2, marginBottom: 2 }}>
   <Box display="flex" alignItems="center" justifyContent="center">
-    <img src={Antonio} style={{ width: 80, marginRight: 16, wordBreak: 'break-all' }} />
+    <img src={Antonio} style={{ width: 80, marginRight: 16, borderRadius: 16, boxShadow: '8px 8px 16px rgba(0,0,0,0.18)' }} />
     <Box>
       <Typography variant="subtitle1" color="text.primary">
         Antonio Gabriel
@@ -127,10 +119,9 @@ https://github.com/Arcane6
   </Box> 
 </Paper>
 
-        <Paper elevation={3} className='card' sx={{ p: 2, maxWidth: 320, textAlign: 'center',
-borderRadius: 2 }}>
+        <Paper elevation={3} className='card' style={{padding: 30}} sx={{ maxWidth: 320, textAlign: 'center', borderRadius: 2, marginBottom: 6 }}>
   <Box display="flex" alignItems="center" justifyContent="center">
-    <img src={Leilane} style={{ width: 80, marginRight: 16, wordBreak: 'break-all' }} />
+    <img src={Leilane} style={{ width: 80, marginRight: 16, borderRadius: 16, boxShadow: '8px 8px 16px rgba(0,0,0,0.18)' }} />
     <Box>
       <Typography variant="subtitle1" color="text.primary">
         Leilane Hirt
