@@ -180,6 +180,11 @@ const Jokes: React.FC = () => {
               {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
             </IconButton>
           </Paper>
+          { language === 'pt'&& (
+          <Typography variant="caption" color="text.secondary" sx={{ mb: 2, fontStyle: 'italic', whiteSpace: 'pre-line' }}>
+            {'É importante lembrar que a tradução é literal\ne pode não fazer sentido fora da linguagem original!'}
+          </Typography>
+        )}
           {step < 2 ? (
             <Button
             variant="contained"
