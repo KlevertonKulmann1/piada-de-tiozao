@@ -90,3 +90,4 @@ export default tseslint.config({
   },
 })
 ```
+link: https://piada-de-tiozao.vercel.app/
