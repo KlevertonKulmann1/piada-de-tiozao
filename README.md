@@ -90,4 +90,7 @@ export default tseslint.config({
   },
 })
 ```
-link: https://piada-de-tiozao.vercel.app/
+---
+# VERCEL
+Existe também a versão online dessa aplicação em modo funcional, basta acessar:
+https://piada-de-tiozao.vercel.app/
