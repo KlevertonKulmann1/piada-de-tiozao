@@ -30,7 +30,7 @@ const Home: React.FC = () => {
                 </Box>
                 <Paper elevation={3} className='card' sx={{ p: 2, mb: 3 }}>
                     <Typography variant="body1" color="text.secondary" fontWeight='500'>
-                    `"Seja bem vindo ao Piadas de Tiozão, aqui você pode encontrar piadas de qualquer lugar do mundo.\n Vale rir quando a tradução não condiz com a piada original".`
+                    {`Seja bem vindo ao Piadas de Tiozão, aqui você pode encontrar piadas de qualquer lugar do mundo.\n Vale rir quando a tradução não condiz com a piada original.`}
                     </Typography>
                 </Paper>
                 <Button variant="contained" size="large" loading={loadingPiada} sx={{ backgroundColor:'#DE8514', width:'100%', borderRadius: 8, fontSize:20, fontWeight: '500', px: 4, '&:focus':{outline:'none'}, '&:hover':{backgroundColor:'#CD7303'} }} onClick={handleHoraDaPiada}>
